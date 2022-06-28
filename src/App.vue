@@ -1,15 +1,29 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <ToDoList :msg="forTestComponent"></ToDoList>
+  <!-- <testComponent :msg="forTestComponent"></testComponent> -->
+  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import ToDoList from './components/toDoList.vue'
+// import testComponent from './components/testComponent.vue'
+import { ref } from 'vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld,
+    ToDoList,
+    // testComponent
+  },
+  setup () {
+    const forTestComponent = ref('toDoList')
+
+    return {
+      forTestComponent
+    }
   }
 }
 </script>
