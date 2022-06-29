@@ -6,10 +6,12 @@
 div.checkList
   div.eachItem(v-for="(item,index) in checkList")
     input(type="checkbox" v-model="item.isCheck")
-    input(v-if="item.isEdit" v-model="item.content" v-on:keyup.enter="(item.isEdit && item.content) ? item.isEdit = !item.isEdit : item.isEdit")
+    input(v-if="item.isEdit"
+      v-model="item.content"
+      v-on:keyup.enter="(item.isEdit && item.content) ? item.isEdit = !item.isEdit : item.isEdit")
     span(v-else) {{ item.content }}
     .actButton
-      .edit(@click="item.isEdit = !item.isEdit") Edit
+      .edit(@click="editItem(item)") Edit
       .delete(@click="deleteItem(index)") Delete
 
 </template>
@@ -25,6 +27,7 @@ export default {
     const checkList = reactive([])
     const inputContent = ref(null)
     const isEdit = ref(false)
+    const contentBackup = ref(null)
 
     function addSomeThingInList ()  {
       if (inputContent.value) {
@@ -41,9 +44,15 @@ export default {
       inputContent.value = null
     }
 
-    // function editItem (item,index) {
-    //   item.isEdit = !item.isEdit
-    // }
+    function editItem (item) {
+      item.isEdit = !item.isEdit
+      if (item.isEdit) {
+        contentBackup.value = JSON.parse(JSON.stringify(item.content))
+      }
+      if (!item.isEdit) {
+        item.content = contentBackup.value
+      }
+    }
 
     function deleteItem (index) {
       checkList.splice(index, 1)
@@ -53,8 +62,9 @@ export default {
       checkList,
       inputContent,
       isEdit,
+      contentBackup,
       addSomeThingInList,
-      // editItem,
+      editItem,
       deleteItem
     }
   }
