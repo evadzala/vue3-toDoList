@@ -16,6 +16,7 @@ export default {
 		const opacity = ref(0)
 
 		onMounted(() => {
+			// 控制JS變數使其產生閃爍效果
 			setInterval(() => {
 				opacity.value >= 1 && (opacity.value = 0)
 				opacity.value += 0.05
@@ -32,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .opacityTest {
+	// css利用v-bind綁定JS變數
 	opacity: v-bind(opacity);
 }
 

@@ -45,6 +45,7 @@ export default {
     }
 
     function editItem (item) {
+      // 點擊Edit成可編輯模式，再次點擊會還原上次資料
       item.isEdit = !item.isEdit
       if (item.isEdit) {
         contentBackup.value = JSON.parse(JSON.stringify(item.content))
