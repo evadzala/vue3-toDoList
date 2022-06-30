@@ -1,14 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <testComponent :msg="forTestComponent"></testComponent>
   <ToDoList :msg="forTestComponent"></ToDoList>
-  <!-- <testComponent :msg="forTestComponent"></testComponent> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import ToDoList from './components/toDoList.vue'
-// import testComponent from './components/testComponent.vue'
+import testComponent from './components/testComponent.vue'
 import { ref } from 'vue'
 
 export default {
@@ -16,7 +16,7 @@ export default {
   components: {
     // HelloWorld,
     ToDoList,
-    // testComponent
+    testComponent
   },
   setup () {
     const forTestComponent = ref('toDoList')
