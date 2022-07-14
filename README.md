@@ -14,6 +14,10 @@ yarn serve
 ```
 yarn build
 ```
+### build & deploy
+```
+yarn deploy
+```
 
 ### Lints and fixes files
 ```
